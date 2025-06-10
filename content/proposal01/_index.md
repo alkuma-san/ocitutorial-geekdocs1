@@ -13,6 +13,7 @@ geekdocTagsToMenu : true
 Kind: {{< showkind >}}  
 Path: `proposal01/index.md`
 
+岡優作編集(20250610)
 
 # [チュートリアル１](./チュートリアル１)
 
