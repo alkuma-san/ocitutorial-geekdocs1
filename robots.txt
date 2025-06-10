@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /tags/*
+
+Sitemap: https://alkuma-san.github.io/ocitutorial-geekdocs1/sitemap.xml
