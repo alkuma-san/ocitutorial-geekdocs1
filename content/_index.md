@@ -38,7 +38,7 @@ OCIコンソールの基本的な操作方法やネットワーク、ストレ�
 OCIの応用編チュートリアルです。
 LoadBalancerや証明書サービスなどをはじめとした各OCIサービスの応用的な使い方を学習できます。
 
-### ■ Oracle Database編
+### ■ Oracle Dat/base編
 北村追記(20250610) パターン4-2
 #### ・Autonomous Database編
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
