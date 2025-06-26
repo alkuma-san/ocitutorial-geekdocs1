@@ -20,7 +20,7 @@ jobs:
 
       - name: Fetch master branch
         run: |
-          git fetch origin master:refs/remote/origin/master
+          git fetch origin master:refs/remotes/origin/master
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
