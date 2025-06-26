@@ -6,33 +6,35 @@ on:
       - '*'
 
 jobs:
-  raise_pull_request:
+  create-pull-request:
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       pull-requests: write
-      contents: read
-    steps:
-      - name: Get a pull request head ref
-        id: pull_request_head
-        run: |
-          case "${{ github.event_name }}" in
-            "pull_request") echo "ref=${{ github.event.pull_request.head.ref }}" >> GITHUB_OUTPUT ;;
-            "push") echo "ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT ;;
-            *) exit 1 ;;
-          esac
 
-      - name: Create a pull request
-        uses: actions/github-script@v7
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const headRef = '${{ steps.pull_request_head.outputs.ref }}'
-            const createParams = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              base: 'master',
-              head: headRef,
-              title: `${headRef.substring(0,1).toUpperCase()}${headRef.substring(1)}`
-            }
-            const { data } = await github.rest.pulls.create(createParams)
-            return data
+          fetch-depth: 0
+
+      - name: Fetch master branch
+        run: |
+          git fetch origin master:refs/remote/origin/master
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Auto-created PR from ${{ github.ref_name }}"
+          title: "Auto PR: ${{ github.ref_name }}"
+          body: |
+            Automated pull request created from push to ${{ github.ref_name }}
+
+            Branch: ${{ github.ref_name }}
+            Triggered by: ${{ github.actor }}
+          branch: ${{ github.ref_name }}
+          base: master
+          labels: |
+            automated-pr
+            needs-review
