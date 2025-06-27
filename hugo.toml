@@ -1,6 +1,5 @@
 baseURL = 'https://alkuma-san.github.io/ocitutorial-geekdocs1/'
 defaultContentLanguage = 'ja'
-canonifyurls = true
 
 # languageCode = 'ja'
 title = 'OCIチュートリアル'
