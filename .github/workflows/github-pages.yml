@@ -17,7 +17,7 @@ jobs:
           hugo-version: '0.144.2'
           extended: true
       - name: Build
-        run: hugo --baseURL "https://alkuma-san.github.io/ocitutorial-geekdocs1/"
+        run: hugo --config hugo.toml
         working-directory: ./
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
