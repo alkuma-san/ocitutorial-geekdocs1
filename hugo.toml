@@ -1,5 +1,6 @@
 baseURL = '/ocitutorial-geekdocs1/'
 defaultContentLanguage = 'ja'
+canonifyurls = true
 
 # languageCode = 'ja'
 title = 'OCIチュートリアル'
