@@ -22,6 +22,8 @@ kitamuraが記入(2025/06/23) aaaaa2
 aaaaaa
 
 ## tokunaga追記　20250627
+## tokunaga追記　自動PR
+
 ## チュートリアルコンテンツ一覧
 
 
