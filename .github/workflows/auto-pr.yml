@@ -13,15 +13,6 @@ jobs:
       contents: read
 
     steps:
-      - name: Get a pull request head ref
-        id: pull_request_head
-        run: |
-          case "${{ github.event_name }}" in
-            "pull_request") echo "ref=${{ github.event.pull_request.head.ref }}" >> GITHUB_OUTPUT ;;
-            "push") echo "ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT ;;
-            *) exit 1 ;;
-          esac
-      
       - name: Check if PR exists for this branch
         id: check_pr
         run: |
@@ -48,7 +39,7 @@ jobs:
         with:
           github-token: ${{ secrets.AUTO_PR_CREATE_TOKEN }}
           script: |
-            const headRef = '${{ steps.pull_request_head.outputs.ref }}'
+            const headRef = '${{ github.ref_name }}'
             const createParams = {
               owner: context.repo.owner,
               repo: context.repo.repo,
