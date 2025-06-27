@@ -31,7 +31,7 @@ jobs:
           PRS=$(curl -s -H "Authorization: token ${{ secrets.AUTO_PR_CREATE_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/pulls?state=open")
 
-          MATCHING_PR=$(echo "$PRS" | jq -r --arg branch "$BRANCH_NAME" '.[] | select(steps.pull_request_head.outputs.ref == $branch) | .number')
+          MATCHING_PR=$(echo "$PRS" | jq -r --arg branch "$BRANCH_NAME" '.[] | select(.head.ref == $branch) | .number')
 
           if [ -n "$MATCHING_PR" ]; then
             echo "Found PR: #$MATCHING_PR"
